@@ -21,6 +21,20 @@ fun main() {
  *                   "----3-945" +
  *                   "----71--6"
  * )
+ * // true
+ *
+ * sudokuChecker9x9(
+ *     sudokuInput = "2--92----" + // duplicate 2
+ *                   "524-1----" +
+ *                   "-------7-" +
+ *                   "-5---81-2" +
+ *                   "---------" +
+ *                   "4-27---9-" +
+ *                   "-6-------" +
+ *                   "----3-945" +
+ *                   "----71--6"
+ * )
+ * // false
  * ```
  */
 fun sudokuChecker9x9(sudokuInput: String): Boolean {
@@ -86,8 +100,9 @@ fun sudokuChecker9x9(sudokuInput: String): Boolean {
  *
  * @return `true` if the sudokuInput is a valid Sudoku, `false` otherwise.
  *
- * Example 1:
+ *
  * ```
+ * // Example 1:
  * sudokuChecker(
  *     sudokuInput =
  *          "1--92----" +
@@ -99,41 +114,53 @@ fun sudokuChecker9x9(sudokuInput: String): Boolean {
  *          "-6-------" +
  *          "----3-945" +
  *          "----71--6"
- * )
- * ```
- * Example 2:
- * ```
+ * ) // true
+ *
+ * // Example 2:
  * sudokuChecker(
- *             sudokuInput =
- *                 " 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0" +
- *                 " 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0" +
- *                 " 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0" +
- *                 " 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0" +
- *                 " 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12" +
- *                 " 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15" +
- *                 " 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0" +
- *                 " 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0" +
- *                 " 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0" +
- *                 " 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0" +
- *                 " 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2" +
- *                 " 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7" +
- *                 " 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0" +
- *                 " 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0" +
- *                 " 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8" +
- *                 " 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 ",
- *             subGridSize = 4,
- *             emptyCell = '0',
- *             cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
- *             delimiter = " "
- *         )
- * ```
- * Example 3:
- * ```
+ *     sudokuInput =
+ *          "2--92----" + // duplicate 2
+ *          "524-1----" +
+ *          "-------7-" +
+ *          "-5---81-2" +
+ *          "---------" +
+ *          "4-27---9-" +
+ *          "-6-------" +
+ *          "----3-945" +
+ *          "----71--6"
+ * ) // false
+ *
+ * // Example 3:
  * sudokuChecker(
- *             sudokuInput = ",a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f,",
- *             cellValues = ",a,b,c,d,e,f,g,h,i,",
- *             delimiter = ","
- *         )
+ *      sudokuInput =
+ *          " 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0" +
+ *          " 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0" +
+ *          " 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0" +
+ *          " 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0" +
+ *          " 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12" +
+ *          " 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15" +
+ *          " 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0" +
+ *          " 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0" +
+ *          " 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0" +
+ *          " 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0" +
+ *          " 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2" +
+ *          " 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7" +
+ *          " 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0" +
+ *          " 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0" +
+ *          " 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8" +
+ *          " 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 ",
+ *      subGridSize = 4,
+ *      emptyCell = '0',
+ *      cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
+ *      delimiter = " "
+ * )  // true
+ *
+ * // Example 4:
+ * sudokuChecker(
+ *      sudokuInput = ",a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f,",
+ *      cellValues = ",a,b,c,d,e,f,g,h,i,",
+ *      delimiter = ","
+ * ) // true
  * ```
  */
 fun sudokuChecker(
@@ -143,29 +170,29 @@ fun sudokuChecker(
     cellValues: String = "123456789",
     delimiter: String = ""
 ): Boolean {
-    // tasks
-        // check for valid inputs
-        // check all cells contains one of cellValues + emptyCell
-        // check non-duplicates in each row
-        // check non-duplicates in each column
-        // check non-duplicate in each sub-grid
+    // requirements:
+    //      valid inputs
+    //      cells values included in cellValues + emptyCell
+    //      non-duplicates in each row
+    //      non-duplicates in each column
+    //      non-duplicate in each sub-grid
 
-    // algorithm
-        // check for valid inputs
-            // check positive number for subGridSize
-            // check for correct length of cellValues
-            // check non duplication in cellValues
-            // check first that the list length is equal to subGridSize * subGridSize * subGridSize * subGridSize, if not, return false.
-        // loop through all indexed characters in sudokuInput
-            //  if character is in cellValues + emptyCell, check for duplication (excluding emptyCell) by checking
-                //  if the character already exist in rows, columns, and subGrids arrays
-            //  if no duplication, record the character in rows, columns, and subGrids arrays
-        // if all checks passed, return true
+    // algorithm:
+    //      check for valid inputs
+    //          check positive number for subGridSize
+    //          check for correct length of cellValues
+    //          check non duplication in cellValues
+    //          check first that the list length is equal to subGridSize * subGridSize * subGridSize * subGridSize, if not, return false.
+    //      loop through all indexed characters in sudokuInput
+    //          if character is in cellValues + emptyCell, check for duplication (excluding emptyCell) by
+    //              checking if the character already exist in rows, columns, and subGrids arrays
+    //          if no duplication, record the character in rows, columns, and subGrids arrays
+    //      if all checks passed, return true
 
     // Note:
-        //  "hello".split("") returns ["", "h", "e", "l", "l", "o", ""],
-        //  so it's necessary to exclude the first and last elements with slice(1..length),
-        //  also, this is why it's necessary to put delimiter in the start and end of sudokuInput
+    //      "hello".split("") returns ["", "h", "e", "l", "l", "o", ""],
+    //      so it's necessary to exclude the first and last elements with slice(1..length),
+    //      also, this is why it's necessary to put delimiter in the start and end of sudokuInput
 
     val dim = subGridSize * subGridSize
 
@@ -189,7 +216,7 @@ fun sudokuChecker(
     // loop through all chars in sudokuInput
     sudokuInput.split(delimiter).slice(1..dim * dim).forEachIndexed{ index, c ->
         if (c in cellValues + emptyCell) {
-            // region checks for duplication in each row, column, and subGrids
+            // checks for duplication in each row, column, and subGrids
             if (c != emptyCell.toString() &&
                     (
                         // rowIndex = index / dim
@@ -202,12 +229,10 @@ fun sudokuChecker(
             ) {
                 return false
             }
-            // endregion
-            // region record non-duplicated values
+            // record non-duplicated values
             rows[index / dim].add(c)
             columns[index % dim].add(c)
             subGrids[subGridSize * ((index / dim) / subGridSize) + (index % dim) / subGridSize].add(c)
-            // endregion
         }
         else {
             return false

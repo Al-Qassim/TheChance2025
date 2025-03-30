@@ -371,6 +371,24 @@ fun main(){
         ),
         correctResult = false
     )
+    check(
+        message = "case 23: incomplete cellValues - should return false",
+        result = sudokuChecker(
+            sudokuInput =
+                ",a,-,-,i,b,-,-,-,-" +
+                ",e,b,d,-,a,-,-,-,-" +
+                ",-,-,-,-,-,-,-,g,-" +
+                ",-,e,-,-,-,h,a,-,b" +
+                ",-,-,-,-,-,-,-,-,-" +
+                ",d,-,b,g,-,-,-,i,-" +
+                ",-,f,-,-,-,-,-,-,-" +
+                ",-,-,-,-,c,-,i,d,e" +
+                ",-,-,-,-,g,a,-,-,f,",
+            cellValues = ",a,b,c,d,e,f,g,h,", // incomplete, i is missing
+            delimiter = ","
+        ),
+        correctResult = false
+    )
 }
 
 fun check(message: String, result: Boolean, correctResult: Boolean){
