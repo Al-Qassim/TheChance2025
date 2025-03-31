@@ -203,6 +203,7 @@ fun sudokuChecker(
     // Note:
     //      "hello".split("") returns ["", "h", "e", "l", "l", "o", ""],
     //      so it's necessary to exclude the first and last elements with slice(1..length),
+    //      and this is why it's necessary to subtract 2 if we want to count the number of characters after splitting be delimiter
     //      also, this is why it's necessary to put delimiter in the start and end of sudokuInput
 
     val dim = subGridSize * subGridSize
@@ -246,6 +247,7 @@ fun sudokuChecker(
             subGrids[subGridSize * ((index / dim) / subGridSize) + (index % dim) / subGridSize].add(c)
         }
         else {
+            // if we fine an invalid character, return false
             return false
         }
 
