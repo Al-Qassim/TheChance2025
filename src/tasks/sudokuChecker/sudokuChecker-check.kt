@@ -3,6 +3,7 @@ package tasks.sudokuChecker
 import sudokuChecker
 
 fun main(){
+
     check(
         message = "case 01: valid sudoku - grid 01 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt - should return true",
         result = sudokuChecker(
@@ -68,7 +69,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 05: duplicate in subgrid - should return false",
+        message = "case 05: another duplicate in subgrid - should return false",
         result = sudokuChecker(
             sudokuInput =
                 "-2-81-74-" +
@@ -163,7 +164,7 @@ fun main(){
         correctResult = true
     )
     check(
-        message = "case 12: duplication - should return false",
+        message = "case 12: another duplication - should return false",
         result = sudokuChecker(
             sudokuInput =
                 "135984276" +
@@ -179,7 +180,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 13: a character other than '123456789-' is used - should return false",
+        message = "case 13: invalid character is used - should return false",
         result = sudokuChecker(
             sudokuInput =
                 "-a-81-74-" +       // letter a
@@ -230,25 +231,23 @@ fun main(){
         message = "case 16: a valid 16x16 sudoku from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt - should return true",
         result = sudokuChecker(
             sudokuInput =
-                " 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0" +
-                " 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0" +
-                " 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0" +
-                " 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0" +
-                " 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12" +
-                " 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15" +
-                " 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0" +
-                " 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0" +
-                " 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0" +
-                " 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0" +
-                " 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2" +
-                " 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7" +
-                " 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0" +
-                " 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0" +
-                " 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8" +
-                " 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 ",
-            subGridSize = 4,
+                "0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0 " +
+                "0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0 " +
+                "14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0 " +
+                "4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0 " +
+                "0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12 " +
+                "3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15 " +
+                "11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0 " +
+                "0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0 " +
+                "0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0 " +
+                "2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0 " +
+                "6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2 " +
+                "0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7 " +
+                "12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0 " +
+                "5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0 " +
+                "0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8 " +
+                "0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0",
             emptyCell = '0',
-            cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
             delimiter = " "
         ),
         correctResult = true
@@ -257,25 +256,23 @@ fun main(){
         message = "case 17: a complete 16x16 sudoku from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt - should return true",
         result = sudokuChecker(
             sudokuInput =
-                " 8 15 11 1 6 2 10 14 12 7 13 3 16 9 4 5" +
-                " 10 6 3 16 12 5 8 4 14 15 1 9 2 11 7 13" +
-                " 14 5 9 7 11 3 15 13 8 2 16 4 12 10 1 6" +
-                " 4 13 2 12 1 9 7 16 6 10 5 11 3 15 8 14" +
-                " 9 2 6 15 14 1 11 7 3 5 10 16 4 8 13 12" +
-                " 3 16 12 8 2 4 6 9 11 14 7 13 10 1 5 15" +
-                " 11 10 5 13 8 12 3 15 1 9 4 2 7 6 14 16" +
-                " 1 4 7 14 13 10 16 5 15 6 8 12 9 2 3 11" +
-                " 13 7 16 5 9 6 1 12 2 8 3 10 11 14 15 4" +
-                " 2 12 8 11 7 16 14 3 5 4 6 15 1 13 9 10" +
-                " 6 3 14 4 10 15 13 8 7 11 9 1 5 12 16 2" +
-                " 15 1 10 9 4 11 5 2 13 16 12 14 8 3 6 7" +
-                " 12 8 4 3 16 7 2 10 9 13 14 6 15 5 11 1" +
-                " 5 11 13 2 3 8 4 6 10 1 15 7 14 16 12 9" +
-                " 7 9 1 6 15 14 12 11 16 3 2 5 13 4 10 8" +
-                " 16 14 15 10 5 13 9 1 4 12 11 8 6 7 2 3 ",
-            subGridSize = 4,
+                "8 15 11 1 6 2 10 14 12 7 13 3 16 9 4 5 " +
+                "10 6 3 16 12 5 8 4 14 15 1 9 2 11 7 13 " +
+                "14 5 9 7 11 3 15 13 8 2 16 4 12 10 1 6 " +
+                "4 13 2 12 1 9 7 16 6 10 5 11 3 15 8 14 " +
+                "9 2 6 15 14 1 11 7 3 5 10 16 4 8 13 12 " +
+                "3 16 12 8 2 4 6 9 11 14 7 13 10 1 5 15 " +
+                "11 10 5 13 8 12 3 15 1 9 4 2 7 6 14 16 " +
+                "1 4 7 14 13 10 16 5 15 6 8 12 9 2 3 11 " +
+                "13 7 16 5 9 6 1 12 2 8 3 10 11 14 15 4 " +
+                "2 12 8 11 7 16 14 3 5 4 6 15 1 13 9 10 " +
+                "6 3 14 4 10 15 13 8 7 11 9 1 5 12 16 2 " +
+                "15 1 10 9 4 11 5 2 13 16 12 14 8 3 6 7 " +
+                "12 8 4 3 16 7 2 10 9 13 14 6 15 5 11 1 " +
+                "5 11 13 2 3 8 4 6 10 1 15 7 14 16 12 9 " +
+                "7 9 1 6 15 14 12 11 16 3 2 5 13 4 10 8 " +
+                "16 14 15 10 5 13 9 1 4 12 11 8 6 7 2 3",
             emptyCell = '0',
-            cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
             delimiter = " "
         ),
         correctResult = true
@@ -284,25 +281,23 @@ fun main(){
         message = "case 18: duplication - 16x16 sudoku - should return false",
         result = sudokuChecker(
             sudokuInput =
-                " 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0" +
-                " 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0" +
-                " 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0" +
-                " 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0" +
-                " 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12" +
-                " 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15" +
-                " 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0" +
-                " 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0" +
-                " 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0" +
-                " 2 12 0 11 0 9 14 3 5 4 0 0 0 0 9 0" + // 9 duplication in this row
-                " 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2" +
-                " 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7" +
-                " 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0" +
-                " 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0" +
-                " 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8" +
-                " 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 ",
-            subGridSize = 4,
+                "0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0 " +
+                "0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0 " +
+                "14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0 " +
+                "4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0 " +
+                "0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12 " +
+                "3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15 " +
+                "11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0 " +
+                "0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0 " +
+                "0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0 " +
+                "2 12 0 11 0 9 14 3 5 4 0 0 0 0 9 0 " + // 9 duplication in this row
+                "6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2 " +
+                "0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7 " +
+                "12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0 " +
+                "5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0 " +
+                "0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8 " +
+                "0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0",
             emptyCell = '0',
-            cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
             delimiter = " "
         ),
         correctResult = false
@@ -310,8 +305,7 @@ fun main(){
     check(
         message = "case 19: valid sudoku from case 6, but with letters instead of numbers, and a comma delimiter - should return true",
         result = sudokuChecker(
-            sudokuInput = ",a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f,",
-            cellValues = ",a,b,c,d,e,f,g,h,i,",
+            sudokuInput = "a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f",
             delimiter = ","
         ),
         correctResult = true
@@ -320,16 +314,15 @@ fun main(){
         message = "case 20: improper delimiter, but with letters instead of numbers, and a comma delimiter - should return false",
         result = sudokuChecker(
             sudokuInput =
-                ",a,,,-,i,b,-,-,-,-" +
-                ",e,b,d,-,a,-,-,-,-" +
-                ",-,-,-,-,-,-,-,g,-" +
-                ",-,e,-,-,-,h,a,-,b" +
-                ",-,-,-,-,-,-,-,-,-" +
-                ",d,-,b,g,-,-,-,i,-" +
-                ",-,f,-,-,-,-,-,-,-" +
-                ",-,-,-,-,c,-,i,d,e" +
-                ",-,-,-,-,g,a,-,-,f,",
-            cellValues = ",a,b,c,d,e,f,g,h,i,",
+                "a,,,-,i,b,-,-,-,-," +
+                "e,b,d,-,a,-,-,-,-," +
+                "-,-,-,-,-,-,-,g,-," +
+                "-,e,-,-,-,h,a,-,b," +
+                "-,-,-,-,-,-,-,-,-," +
+                "d,-,b,g,-,-,-,i,-," +
+                "-,f,-,-,-,-,-,-,-," +
+                "-,-,-,-,c,-,i,d,e," +
+                "-,-,-,-,g,a,-,-,f",
             delimiter = ","
         ),
         correctResult = false
@@ -338,16 +331,15 @@ fun main(){
         message = "case 21: not spacing delimiter - should return false",
         result = sudokuChecker(
             sudokuInput =
-                ",a,-,-,i,b,-,-,-,-" +
-                ",e,b,d,-,a,-,-,-,-" +
-                ",-,-,-,-,-,-,-,g,-" +
-                ",-,e,-,-,-,h,a,-,b" +
-                ",-,-,-,-,-,-,-,-,-" +
-                ",d,-,b,g,-,-,-,i,-" +
-                ",-,f,-,-,-,-,-,-,-" +
-                ",-,-,-,-,c,-,i,d,e" +
-                ",-,-,-,-,g,a,-,-,f,",
-            cellValues = ",a,b,c,d,e,f,g,h,i,",
+                "a,-,-,i,b,-,-,-,-," +
+                "e,b,d,-,a,-,-,-,-," +
+                "-,-,-,-,-,-,-,g,-," +
+                "-,e,-,-,-,h,a,-,b," +
+                "-,-,-,-,-,-,-,-,-," +
+                "d,-,b,g,-,-,-,i,-," +
+                "-,f,-,-,-,-,-,-,-," +
+                "-,-,-,-,c,-,i,d,e," +
+                "-,-,-,-,g,a,-,-,f",
             // delimiters = ","
         ),
         correctResult = false
@@ -356,35 +348,16 @@ fun main(){
         message = "case 22: incorrect empty cell - should return false",
         result = sudokuChecker(
             sudokuInput =
-                ",a,-,-,i,b,-,-,-,-" +
-                ",e,b,d,-,a,-,-,-,-" +
-                ",-,-,-,-,-,-,-,g,-" +
-                ",-,e,-,-,-,h,a,-,b" +
-                ",-,-,-,-,-,-,-,-,-" +
-                ",d,-,b,g,-,-,-,i,-" +
-                ",-,f,-,-,-,-,-,-,-" +
-                ",-,-,-,-,c,-,i,d,e" +
-                ",-,-,-,-,g,a,-,-,f,",
-            cellValues = ",a,b,c,d,e,f,g,h,i,",
+                "a,-,-,i,b,-,-,-,-," +
+                "e,b,d,-,a,-,-,-,-," +
+                "-,-,-,-,-,-,-,g,-," +
+                "-,e,-,-,-,h,a,-,b," +
+                "-,-,-,-,-,-,-,-,-," +
+                "d,-,b,g,-,-,-,i,-," +
+                "-,f,-,-,-,-,-,-,-," +
+                "-,-,-,-,c,-,i,d,e," +
+                "-,-,-,-,g,a,-,-,f",
             emptyCell = '0',    // should '-'
-            delimiter = ","
-        ),
-        correctResult = false
-    )
-    check(
-        message = "case 23: incomplete cellValues - should return false",
-        result = sudokuChecker(
-            sudokuInput =
-                ",a,-,-,i,b,-,-,-,-" +
-                ",e,b,d,-,a,-,-,-,-" +
-                ",-,-,-,-,-,-,-,g,-" +
-                ",-,e,-,-,-,h,a,-,b" +
-                ",-,-,-,-,-,-,-,-,-" +
-                ",d,-,b,g,-,-,-,i,-" +
-                ",-,f,-,-,-,-,-,-,-" +
-                ",-,-,-,-,c,-,i,d,e" +
-                ",-,-,-,-,g,a,-,-,f,",
-            cellValues = ",a,b,c,d,e,f,g,h,", // incomplete, i is missing
             delimiter = ","
         ),
         correctResult = false

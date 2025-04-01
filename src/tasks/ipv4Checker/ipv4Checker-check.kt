@@ -68,6 +68,11 @@ fun main(){
         result = ipv4Checker("255.255.255.0"),
         correctResult = true
     )
+    check(
+        message = "case 13: put a minus zero - should be false",
+        result = ipv4Checker("255.255.255.-0"),
+        correctResult = false
+    )
 }
 
 fun check(message: String, result: Boolean, correctResult: Boolean){

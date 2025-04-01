@@ -1,6 +1,9 @@
 fun main() {
 
 }
+
+
+
 /**
  * Checks if the given string represents a valid IPv4 address.
  *
@@ -31,15 +34,18 @@ fun ipv4Checker(ipv4Input : String) : Boolean {
     val numericalSegments = ipv4Input.split(".")
     if (numericalSegments.size != 4) return false
 
-    numericalSegments.forEach{n ->
+    numericalSegments.forEach{numericalSegment ->
         // ensure numerical segment is a UByte, i.e. an integer in range 0..255
         try {
-            n.toUByte()
+            numericalSegment.toUByte()
         } catch (_: Exception) {
             return false
         }
         // ensure numerical segment don't have leading zero while not equaling "0"
-        if (n[0] == '0' && n != "0") return false
+        if (numericalSegment[0] == '0' && numericalSegment != "0") return false
     }
     return true
 }
+
+
+

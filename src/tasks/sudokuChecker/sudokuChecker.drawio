@@ -1,136 +1,156 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0" version="26.1.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0" version="26.2.3">
   <diagram name="Page-1" id="WZuCPipf8IQ8YPeU5nme">
-    <mxGraphModel dx="1103" dy="595" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="985" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="FfqD-mipQO4yirsWOSt2-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-1" target="FfqD-mipQO4yirsWOSt2-10">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-1" target="FfqD-mipQO4yirsWOSt2-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-1" value="&lt;h2 align=&quot;center&quot;&gt;Inputs&lt;/h2&gt;&lt;div&gt;sudokuInput : String &lt;br&gt;subGridSize : Int&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;br&gt;&amp;nbsp; emptyCell : Char &lt;br&gt;&amp;nbsp;&amp;nbsp; cellValues : String &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; delimiter : String &lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="20" width="220" height="130" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-1" value="&lt;div&gt;Inputs&lt;br&gt;sudokuInput : String&lt;br&gt;&amp;nbsp; emptyCell : Char &lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; delimiter : String &lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="20" width="220" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-3" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Sudoku Checker&lt;/h1&gt;&lt;p&gt;By Alqassim A. Hasan&lt;/p&gt;&lt;p&gt;Checks if the given string represents a valid Sudoku puzzle.&lt;/p&gt;&lt;p&gt;parameters:&amp;nbsp;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;sudokuInput A string representing a Sudoku grid. make sure to start and end with delimiter&lt;/li&gt;&lt;li&gt;subGridSize integer that determines the sudoku size. default is 3 witch gives the usual 9x9 &lt;/li&gt;&lt;li&gt;emptyCell A char that indicate empty cells, default is &#39;-&#39;.&lt;/li&gt;&lt;li&gt;cellValues A string representing the valid cell values, it&#39;s length must be subGridSize * su&lt;/li&gt;&lt;li&gt;delimiter A string representing the separation between cells. default is empty string &quot;&quot;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;return:&amp;nbsp;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;`true` if the sudokuInput is a valid Sudoku, `false` otherwise.&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;Example:&lt;/p&gt;&lt;p&gt;sudokuChecker(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; sudokuInput =&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 &quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; subGridSize = 4,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; emptyCell = &#39;0&#39;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; cellValues = &quot; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 &quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; delimiter = &quot; &quot;&lt;br&gt;)&amp;nbsp; // true&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=default;strokeColor=default;spacingLeft=10;spacingRight=10;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="10" y="10" width="240" height="600" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-3" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Sudoku Checker&lt;/h1&gt;&lt;p style=&quot;line-height: 100%;&quot;&gt;By Alqassim A. Hasan&lt;/p&gt;&lt;p&gt;Checks if the given string represents a valid Sudoku puzzle.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;sudokuInput: A string representing a Sudoku grid.&lt;/li&gt;&lt;li&gt;emptyCell A char that indicate empty cells, default is &#39;-&#39;.&lt;/li&gt;&lt;li&gt;delimiter A string representing the separation between cells. default is empty string &quot;&quot;.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;return: `true` if the sudokuInput is a valid Sudoku, `false` otherwise.&lt;br&gt;&lt;/p&gt;&lt;p&gt;Example:&lt;/p&gt;&lt;p&gt;sudokuChecker(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; sudokuInput =&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--3-2-6--&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;9--3-5--1&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--18-64--&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--81-29--&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;7-------8&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--67-82--&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--26-95--&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;8--2-3--9&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot;--5-1-3--&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; ) // true&lt;/p&gt;&lt;p&gt;sudokuChecker(&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; sudokuInput =&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8&quot; +&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &quot; 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 &quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; emptyCell = &#39;0&#39;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; delimiter = &quot; &quot;&lt;br&gt;)&amp;nbsp; // true&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=default;strokeColor=default;spacingLeft=10;spacingRight=10;fontSize=9;" parent="1" vertex="1">
+          <mxGeometry x="10" y="10" width="240" height="610" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-10" target="FfqD-mipQO4yirsWOSt2-12">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-10" target="FfqD-mipQO4yirsWOSt2-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-10" value="&lt;div&gt;side length of the sudoku grid:&amp;nbsp;&lt;/div&gt;&lt;div&gt;dim = subGridSize ^ 2&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="350" y="170" width="160" height="60" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-10" value="&lt;div&gt;calculate dimensions and unique values &lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;dim = square root of # of values separated by delimiter in sudokuInput&amp;nbsp;&lt;/li&gt;&lt;li&gt;subGridSize = square root of dim&lt;/li&gt;&lt;li&gt;uniqueValues = unique values separated by delimiter in sudokuInput, exclude emptyCell &lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="270" y="110" width="320" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-12" target="FfqD-mipQO4yirsWOSt2-16">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FfqD-mipQO4yirsWOSt2-12" target="FfqD-mipQO4yirsWOSt2-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="730" y="980" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-12" target="FfqD-mipQO4yirsWOSt2-18">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-12" target="FfqD-mipQO4yirsWOSt2-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-12" value="&lt;blockquote&gt;Inputs Validity checks&lt;/blockquote&gt;&lt;div align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;sudokuInput have #(dim ^ 2) values&lt;/li&gt;&lt;li&gt;subGridSize is positive integer&lt;/li&gt;&lt;li&gt;cellValues have #dim values with no duplication &lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;all checks passed?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;spacingRight=30;spacingLeft=30;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-12" value="&lt;blockquote&gt;Inputs Validity checks&lt;/blockquote&gt;&lt;div align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;dim is positive integer&lt;/li&gt;&lt;li&gt;subGridSize is positive integer&lt;/li&gt;&lt;li&gt;uniqueValues have #dim values &lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;all checks passed?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;spacingRight=30;spacingLeft=30;" parent="1" vertex="1">
           <mxGeometry x="260" y="250" width="340" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-16" value="return false" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-16" value="return false" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="670" y="1010" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-17" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-17" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="580" y="310" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-18" target="FfqD-mipQO4yirsWOSt2-21">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-18" target="FfqD-mipQO4yirsWOSt2-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-18" value="Initialize 2D array for each of rows, columns, and subGrids, these will be used to track values as we loop through them" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-18" value="Initialize 2D array for each of rows, columns, and subGrids, these will be used to track values as we loop through them" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
           <mxGeometry x="280" y="460" width="300" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-20" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-20" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="420" y="430" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-21" target="FfqD-mipQO4yirsWOSt2-25">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-21" target="FfqD-mipQO4yirsWOSt2-25" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-21" value="&lt;div&gt;loop through all indexed values in sudokuInput as they are saperaated by delimiter&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;(index, value)&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-21" value="&lt;div&gt;loop through all indexed values in sudokuInput as they are saperaated by delimiter&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;(index, value)&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
           <mxGeometry x="290" y="540" width="280" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-23" target="FfqD-mipQO4yirsWOSt2-42">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="FfqD-mipQO4yirsWOSt2-23" target="FfqD-mipQO4yirsWOSt2-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-23" value="&lt;div&gt;rowIndex&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; = index / dim&amp;nbsp;&lt;/div&gt;&lt;div&gt;columnsIndex = index % dim &lt;br&gt;&lt;/div&gt;&lt;div&gt;subGridIndex&amp;nbsp; = subGridSize * (rowIndex / subGridSize) + columnIndex / subGridSize&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=10;spacingLeft=10;align=left;" vertex="1" parent="1">
-          <mxGeometry x="190" y="802" width="480" height="60" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-23" value="&lt;div&gt;rowIndex&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; = index / dim&amp;nbsp;&lt;/div&gt;&lt;div&gt;columnsIndex = index % dim &lt;br&gt;&lt;/div&gt;&lt;div&gt;subGridIndex&amp;nbsp; = subGridSize * (rowIndex / subGridSize) + columnIndex / subGridSize&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=10;spacingLeft=10;align=left;" parent="1" vertex="1">
+          <mxGeometry x="425" y="760" width="250" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-25" target="FfqD-mipQO4yirsWOSt2-16">
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-25" target="FfqD-mipQO4yirsWOSt2-57">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-25" target="FfqD-mipQO4yirsWOSt2-33">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-25" target="FfqD-mipQO4yirsWOSt2-33">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-25" value="value == emptyCell?" style="rhombus;whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
+          <mxGeometry x="222" y="660" width="175" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-33">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-33" target="FfqD-mipQO4yirsWOSt2-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="780" />
+              <mxPoint x="550" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-33" value="value in uniqueValues ?" style="rhombus;whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
+          <mxGeometry x="460" y="660" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-35" target="FfqD-mipQO4yirsWOSt2-57">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="1015" />
+              <mxPoint x="250" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-35" value="&lt;div&gt;add value to &lt;div align=&quot;center&quot;&gt;row[rowIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;column[columnIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;and subGrids[subGridIndex]&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
+          <mxGeometry x="470" y="977" width="160" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FfqD-mipQO4yirsWOSt2-42" target="FfqD-mipQO4yirsWOSt2-16" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-42" target="FfqD-mipQO4yirsWOSt2-35">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-25" value="value in cellValues + emptyCell?" style="rhombus;whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
-          <mxGeometry x="310" y="640" width="240" height="60" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-42" value="&lt;div align=&quot;center&quot;&gt;does value exist&amp;nbsp;already in&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;row[rowIndex], column[columnIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;or subGrids[subGridIndex]?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;align=center;spacingRight=10;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="420" y="850" width="260" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-33" target="FfqD-mipQO4yirsWOSt2-35">
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-45" target="FfqD-mipQO4yirsWOSt2-25">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-33" target="FfqD-mipQO4yirsWOSt2-23">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-45" value="go to next value and index" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" parent="1" vertex="1">
+          <mxGeometry x="50" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-49" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="720" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-55" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="947" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FfqD-mipQO4yirsWOSt2-56" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="660" y="900" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-57" target="FfqD-mipQO4yirsWOSt2-61">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-33" value="value == emptyCell ?" style="rhombus;whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
-          <mxGeometry x="310" y="732" width="240" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-35" target="FfqD-mipQO4yirsWOSt2-45">
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-57" target="FfqD-mipQO4yirsWOSt2-45">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-35" value="&lt;div&gt;add value in &lt;div align=&quot;center&quot;&gt;row[rowIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;column[columnIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;and subGrids[subGridIndex]&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
-          <mxGeometry x="30" y="714" width="160" height="76" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-57" value="finished the loop" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="790" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-42" target="FfqD-mipQO4yirsWOSt2-16">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-60" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="95" y="765" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-42" target="FfqD-mipQO4yirsWOSt2-57">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-42" value="&lt;div align=&quot;center&quot;&gt;does value exist&amp;nbsp;already in&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;row[rowIndex], column[columnIndex],&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;or subGrids[subGridIndex]?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;align=center;spacingRight=10;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="270" y="880" width="320" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-45" target="FfqD-mipQO4yirsWOSt2-25">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-45" value="go to next value and index" style="whiteSpace=wrap;html=1;spacingRight=0;spacingLeft=0;" vertex="1" parent="1">
-          <mxGeometry x="50" y="640" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-49" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="420" y="700" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-50" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="540" y="670" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-51" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="270" y="720" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-54" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="424" y="768" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-55" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="230" y="900" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-56" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="580" y="900" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-57" target="FfqD-mipQO4yirsWOSt2-35">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FfqD-mipQO4yirsWOSt2-57" target="FfqD-mipQO4yirsWOSt2-61">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-57" value="finished the loop" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="890" width="140" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-60" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="100" y="870" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-61" value="return true" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="FfqD-mipQO4yirsWOSt2-61" value="return true" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="50" y="1010" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="FfqD-mipQO4yirsWOSt2-63" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="110" y="980" width="60" height="30" as="geometry" />
+        <mxCell id="FfqD-mipQO4yirsWOSt2-63" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="95" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-9" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="660" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-18" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="293" y="713" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fhVHIMc_ddkikwwu0DHq-19" value="No" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="690" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

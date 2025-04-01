@@ -1,15 +1,19 @@
+import kotlin.math.sqrt
+
 fun main() {
-    println(sudokuChecker9x9(
+
+    print("valid sudoku: " + sudokuChecker(
         sudokuInput =
-            "--3-2-6--" +
-            "9--3-5--1" +
-            "--18-64--" +
-            "--81-29--" +
-            "7-------8" +
-            "--67-82--" +
-            "--26-95--" +
-            "8--2-3--9" +
-            "--5-1-3--"
+            "1--92----" +
+            "524-1----" +
+            "-------7-" +
+            "-5---81-2" +
+            "---------" +
+            "4-27---9-" +
+            "-6-------" +
+            "----3-945" +
+            "----71--6",
+        printInputAndInternalArrays = true
     ))
 }
 
@@ -99,14 +103,11 @@ fun sudokuChecker9x9(sudokuInput: String): Boolean {
     return true
 }
 
-
 /**
  * Checks if the given string represents a valid Sudoku puzzle.
  *
- * @param sudokuInput A string representing a Sudoku grid. make sure to start and end with delimiter
- * @param subGridSize integer that determines the sudoku size. default is 3 witch gives the usual 9x9 sudoku.
- * @param emptyCell A char that indicate empty cells, default is '-'.
- * @param cellValues A string representing the valid cell values, it's length must be subGridSize * subGridSize, with no duplicates. default "123456789". make sure to start and end with delimiter
+ * @param sudokuInput A string representing a Sudoku grid.
+ * @param emptyCell A char that indicate empty cells, default is '-'
  * @param delimiter A string representing the separation between cells. default is empty string "".
  *
  * @return `true` if the sudokuInput is a valid Sudoku, `false` otherwise.
@@ -144,113 +145,138 @@ fun sudokuChecker9x9(sudokuInput: String): Boolean {
  * // Example 3:
  * sudokuChecker(
  *      sudokuInput =
- *          " 0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0" +
- *          " 0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0" +
- *          " 14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0" +
- *          " 4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0" +
- *          " 0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12" +
- *          " 3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15" +
- *          " 11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0" +
- *          " 0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0" +
- *          " 0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0" +
- *          " 2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0" +
- *          " 6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2" +
- *          " 0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7" +
- *          " 12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0" +
- *          " 5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0" +
- *          " 0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8" +
- *          " 0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0 ",
- *      subGridSize = 4,
+ *          "0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0 " +
+ *          "0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0 " +
+ *          "14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0 " +
+ *          "4 13 2 12 0 0 0 0 6 0 0 0 0 15 0 0 " +
+ *          "0 0 0 0 14 1 11 7 3 5 10 0 0 8 0 12 " +
+ *          "3 16 0 0 2 4 0 0 0 14 7 13 0 0 5 15 " +
+ *          "11 0 5 0 0 0 0 0 0 9 4 0 0 6 0 0 " +
+ *          "0 0 0 0 13 0 16 5 15 0 0 12 0 0 0 0 " +
+ *          "0 0 0 0 9 0 1 12 0 8 3 10 11 0 15 0 " +
+ *          "2 12 0 11 0 0 14 3 5 4 0 0 0 0 9 0 " +
+ *          "6 3 0 4 0 0 13 0 0 11 9 1 0 12 16 2 " +
+ *          "0 0 10 9 0 0 0 0 0 0 12 0 8 0 6 7 " +
+ *          "12 8 0 0 16 0 0 10 0 13 0 0 0 5 0 0 " +
+ *          "5 0 0 0 3 0 4 6 0 1 15 0 0 0 0 0 " +
+ *          "0 9 1 6 0 14 0 11 0 0 2 0 0 0 10 8 " +
+ *          "0 14 0 0 0 13 9 0 4 12 11 8 0 0 2 0",
  *      emptyCell = '0',
- *      cellValues = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ",
  *      delimiter = " "
  * )  // true
  *
  * // Example 4:
  * sudokuChecker(
- *      sudokuInput = ",a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f,",
- *      cellValues = ",a,b,c,d,e,f,g,h,i,",
+ *      sudokuInput = "a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f",
  *      delimiter = ","
  * ) // true
  * ```
  */
 fun sudokuChecker(
     sudokuInput: String,
-    subGridSize: Int = 3,
     emptyCell: Char = '-',
-    cellValues: String = "123456789",
-    delimiter: String = ""
+    delimiter: String = "",
+    printInputAndInternalArrays : Boolean = false,
 ): Boolean {
     // requirements:
-    //      valid inputs
-    //      cells values included in cellValues + emptyCell
+    //      check if input can be shaped as a sudoku
     //      non-duplicates in each row
     //      non-duplicates in each column
     //      non-duplicate in each sub-grid
 
     // algorithm:
+    //      calculate sudoku dimensions
     //      check for valid inputs
-    //          check positive number for subGridSize
-    //          check for correct length of cellValues
-    //          check non duplication in cellValues
-    //          check first that the list length is equal to subGridSize * subGridSize * subGridSize * subGridSize, if not, return false.
-    //      loop through all indexed characters in sudokuInput
-    //          if character is in cellValues + emptyCell, check for duplication (excluding emptyCell) by
-    //              checking if the character already exist in rows, columns, and subGrids arrays
-    //          if no duplication, record the character in rows, columns, and subGrids arrays
+    //          check positive number for dim
+    //          check for correct length of unique values
+    //          check if the number of values in sudokuInput is equal to subGridSize ^ 4
+    //      loop through all indexed values in the sudoku
+    //          detect duplication by checking if the value already exist in rows, columns, and subGrids arrays
+    //          if no duplication, record the value in the arrays
     //      if all checks passed, return true
 
-    // Note:
-    //      "hello".split("") returns ["", "h", "e", "l", "l", "o", ""],
-    //      so it's necessary to exclude the first and last elements with slice(1..length),
-    //      and this is why it's necessary to subtract 2 if we want to count the number of characters after splitting be delimiter
-    //      also, this is why it's necessary to put delimiter in the start and end of sudokuInput
 
-    val dim = subGridSize * subGridSize
+    var sudokuValues = sudokuInput.split(delimiter)
+
+    // Note: "hello".split("") returns ["", "h", "e", "l", "l", "o", ""],
+    //        so it's necessary to exclude the first and last elements if the delimiter is empty string ("")
+    if (delimiter == ""){
+        sudokuValues = sudokuValues.slice(1 ..< sudokuValues.lastIndex)
+    }
+
+    val uniqueValues = sudokuValues.distinct().filter { cellValue -> cellValue != emptyCell.toString() }
+    // in usual case, uniqueValues = ["1", "2", ..., "9"]
+
+    // calculate sudoku dimensions
+    val dim = sqrt(sudokuValues.size.toFloat()).toInt()
+    if (dim <= 0) return false
+    val subGridSize = sqrt(dim.toFloat()).toInt()
+    if (subGridSize <= 0) return false
 
     // check inputs
-        // subGridSize should be positive
-    if (subGridSize <= 0) return false
-        // cellValues should contain #dim values
-    if (cellValues.split(delimiter).size - 2 != dim) return false
-        // check for no duplication in cellValues
-    for ((index, c) in cellValues.split(delimiter).slice(1..dim).withIndex()){
-        if (c in cellValues.split(delimiter).slice(1..index)) return false
-    }
-        // sudokuInput should contain #(dim * dim) values
-    if (sudokuInput.split(delimiter).size - 2 != dim * dim) return false
+    // number of values should be equal to dim ^ 2 and dim should be equal to subGridSize
+    if (dim * dim != sudokuValues.size && subGridSize * subGridSize != dim) return false
+        // uniqueValues should contain #(dim + 1) values
+    if (uniqueValues.size != dim) return false
+
 
     // initialize the main arrays to check for duplication
     val rows : MutableList<MutableList<String>> = MutableList(dim){ mutableListOf() }
     val columns : MutableList<MutableList<String>> = MutableList(dim){ mutableListOf() }
     val subGrids : MutableList<MutableList<String>> = MutableList(dim){ mutableListOf() }
+    var rowIndex : Int
+    var columnIndex : Int
+    var subGridIndex : Int
 
-    // loop through all chars in sudokuInput
-    sudokuInput.split(delimiter).slice(1..dim * dim).forEachIndexed{ index, c ->
-        if (c in cellValues + emptyCell) {
+    // loop through all values in sudokuValues
+    for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
+        if (cellValue == emptyCell.toString()) {
+            continue
+        } else if (cellValue in uniqueValues) {
+
             // checks for duplication in each row, column, and subGrids
-            if (c != emptyCell.toString() &&
-                    (
-                        // rowIndex = index / dim
-                        c in rows[index / dim] ||
-                        // columnIndex = index % dim
-                        c in columns[index % dim] ||
-                        // subGridsIndex = subGridSize * (rowIndex / subGridSize) + columnIndex / subGridSize, this will be in 0 until dim
-                        c in subGrids[subGridSize * ((index / dim) / subGridSize) + (index % dim) / subGridSize]
-                    )
-            ) {
-                return false
-            }
+            rowIndex = valueIndex / dim
+            columnIndex = valueIndex % dim
+            subGridIndex = subGridSize * (rowIndex / subGridSize) + columnIndex / subGridSize
+
+            if (
+                cellValue in rows[rowIndex] ||
+                cellValue in columns[columnIndex] ||
+                cellValue in subGrids[subGridIndex]
+                ) return false
+
             // record non-duplicated values
-            rows[index / dim].add(c)
-            columns[index % dim].add(c)
-            subGrids[subGridSize * ((index / dim) / subGridSize) + (index % dim) / subGridSize].add(c)
+            rows[rowIndex].add(cellValue)
+            columns[columnIndex].add(cellValue)
+            subGrids[subGridIndex].add(cellValue)
         }
         else {
-            // if we fine an invalid character, return false
+            // if we find an invalid character, return false
             return false
         }
 
     }
+
+    // this is for presentation
+    if (printInputAndInternalArrays) {
+        var inputString = ""
+        for ((index, value) in sudokuValues.withIndex()){
+            inputString += String.format("%3s", value)
+            if ((index % dim + 1) % subGridSize == 0) inputString += String.format("%3s", "|")
+            if ((index / dim + 1) % subGridSize == 0 && (index % dim + 1) == dim) {
+                inputString += "\n"
+                for (i in 1..dim) {
+                    inputString += String.format("%3s", "---")
+                    if (i % subGridSize == 0) inputString += String.format("%3s", "--+")
+                }
+            }
+            if ((index + 1) % dim == 0) inputString += "\n"
+        }
+        println("input sudoku grid: \n$inputString")
+        println("rows: $rows")
+        println("columns: $columns")
+        println("subGrids: $subGrids")
+    }
+
     return true
 }
