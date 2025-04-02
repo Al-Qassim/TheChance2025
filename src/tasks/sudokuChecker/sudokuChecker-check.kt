@@ -354,12 +354,13 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "when sudoku is a valid 3x3 grid, then return true",
+        message = "when sudoku is a valid 4x4 grid, then return true",
         result = sudokuChecker(
             sudokuInput =
-                "1--" +
-                "32-" +
-                "-3-"
+                "1--4" +
+                "32-1" +
+                "-3-2" +
+                "-1-3"
         ),
         correctResult = true
     )

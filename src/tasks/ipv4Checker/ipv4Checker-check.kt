@@ -63,6 +63,11 @@ fun main(){
         result = ipv4Checker("255.255.255.-0"),
         correctResult = false
     )
+    check(
+        message = "when input has a space, then return false",
+        result = ipv4Checker("255. 255.255.0"),
+        correctResult = false
+    )
 }
 
 fun check(message: String, result: Boolean, correctResult: Boolean){
