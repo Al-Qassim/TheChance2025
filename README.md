@@ -1,0 +1,1 @@
+I use this repo to store all the code for the tasks and projects I work on for the [The Chance Program](https://the-chance.net/)
