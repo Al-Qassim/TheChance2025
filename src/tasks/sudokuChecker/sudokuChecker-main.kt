@@ -18,92 +18,6 @@ fun main() {
 }
 
 /**
- * Checks if the given string represents a valid 9x9 Sudoku puzzle.
- *
- * @param sudokuInput A string representing a 9x9 Sudoku grid. Digits 1-9 indicate filled cells, and '-' indicate empty cells.
- * @return `true` if the input is a valid Sudoku, `false` otherwise.
- *
- * Example:
- * ```
- * sudokuChecker9x9(
- *     sudokuInput = "1--92----" +
- *                   "524-1----" +
- *                   "-------7-" +
- *                   "-5---81-2" +
- *                   "---------" +
- *                   "4-27---9-" +
- *                   "-6-------" +
- *                   "----3-945" +
- *                   "----71--6"
- * )
- * // true
- *
- * sudokuChecker9x9(
- *     sudokuInput = "2--92----" + // duplicate 2
- *                   "524-1----" +
- *                   "-------7-" +
- *                   "-5---81-2" +
- *                   "---------" +
- *                   "4-27---9-" +
- *                   "-6-------" +
- *                   "----3-945" +
- *                   "----71--6"
- * )
- * // false
- * ```
- */
-fun sudokuChecker9x9(sudokuInput: String): Boolean {
-    // tasks
-        // check there are 81 cells, witch indicate 9x9 grid
-        // check all cells contains one of "123456789-"
-        // check non-duplicates in each row
-        // check non-duplicates in each column
-        // check non-duplicate in each 3x3 sub-grid
-
-    // algorithm
-        // check first that the list length is equal to 81, if not, return false.
-        //      this check indicate 9x9 grid
-        // loop through all indexed characters in sudokuInput
-        //      if character is in "123456789-", check for duplication (excluding '-') by checking
-        //           if the character already exist in rows, columns, and subgrid3X3 arrays
-        //      if no duplication, record the character in rows, columns, and subgrid3X3 arrays
-        // if all checks passed, return true
-
-    val rows : MutableList<String> = MutableList(9) { "" }
-    val columns : MutableList<String> = MutableList(9) { "" }
-    val subgrid3X3 : MutableList<String> = MutableList(9) { "" }
-
-    if (sudokuInput.length != 81) return false  // in the long run, this will guarantee the correct number of rows
-                                                // since we will tasks.SudokuChecker.check later that each row has 10 characters, so there are 9 rows
-
-    sudokuInput.toCharArray().forEachIndexed{ index, c ->
-        if (c in "123456789-") {
-            // region checks for duplication in each row, column, and subgrid3X3
-            if (c != '-' &&
-                    (
-                        // rowIndex = index / 9, this will be in 0..8 since index is in 0..80
-                        c in rows[index / 9] ||
-                        // columnIndex = index % 9, this will be in 0..8 since index % 9 != 9
-                        c in columns[index % 9] ||
-                        // subgrid3X3Index = 3 * (rowIndex / 3) + columnIndex / 3 , this will be in 0..8
-                        c in subgrid3X3[3 * ((index / 9) / 3) + (index % 9) / 3]
-                    )
-            ) {
-                return false
-            }
-            // endregion
-            // region record non-duplicated values
-            rows[index / 9] = rows[index / 9] + c
-            columns[index % 9] = columns[index % 9] + c
-            subgrid3X3[3 * ((index / 9) / 3) + (index % 9) / 3] = subgrid3X3[3 * ((index / 9) / 3) + (index % 9) / 3] + c
-            // endregion
-        }
-        else return false
-    }
-    return true
-}
-
-/**
  * Checks if the given string represents a valid Sudoku puzzle.
  *
  * @param sudokuInput A string representing a Sudoku grid.
@@ -214,9 +128,9 @@ fun sudokuChecker(
     if (subGridSize <= 0) return false
 
     // check inputs
-    // number of values should be equal to dim ^ 2 and dim should be equal to subGridSize
-    if (dim * dim != sudokuValues.size && subGridSize * subGridSize != dim) return false
-        // uniqueValues should contain #(dim + 1) values
+    // number of values should be equal to dim ^ 2 and dim should be equal to subGridSize ^ 2
+    if (dim * dim != sudokuValues.size || subGridSize * subGridSize != dim) return false
+        // uniqueValues should contain #dim values
     if (uniqueValues.size != dim) return false
 
 

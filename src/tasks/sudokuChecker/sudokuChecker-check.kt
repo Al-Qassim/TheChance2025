@@ -5,9 +5,9 @@ import sudokuChecker
 fun main(){
 
     check(
-        message = "case 01: valid sudoku - grid 01 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt - should return true",
+        message = "when sudoku grid is valid, then return true",
         result = sudokuChecker(
-            sudokuInput =
+            sudokuInput =           // grid 01 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt
                 "--3-2-6--" +
                 "9--3-5--1" +
                 "--18-64--" +
@@ -21,7 +21,7 @@ fun main(){
         correctResult = true
     )
     check(
-        message = "case 02: duplicate in column - should return false",
+        message = "when column has a duplicate, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "3---8-3--" +       // 3 duplicate in first column
@@ -37,7 +37,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 03: duplicate in row - should return false",
+        message = "when row has a duplicate, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "------9-7" +
@@ -53,7 +53,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 04: duplicate in subgrid - should return false",
+        message = "when sub-grid has a duplicate, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "-3--5--4-" +       // 3 duplicate in upper right subgrid
@@ -69,7 +69,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 05: another duplicate in subgrid - should return false",
+        message = "when sub-grid has a duplicate (v2), then return false",
         result = sudokuChecker(
             sudokuInput =
                 "-2-81-74-" +
@@ -85,10 +85,10 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 06: valid sudoku - grid 06 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt - should return true",
+        message = "when sudoku is valid (v2), then return true",
         result = sudokuChecker(
             sudokuInput =
-                "1--92----" +
+                "1--92----" +       // grid 06 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt
                 "524-1----" +
                 "-------7-" +
                 "-5---81-2" +
@@ -100,9 +100,8 @@ fun main(){
         ),
         correctResult = true
     )
-    listOf(1, 2, 5, 3).sorted()
     check(
-        message = "case 07: invalid grid because not enough rows - should return false",
+        message = "when grid has not enough rows, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "1--92----" +
@@ -116,7 +115,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 08: empty input - should return false",
+        message = "when grid is empty, then return false",
         result = sudokuChecker(
             sudokuInput =
                 ""
@@ -124,7 +123,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 09: random input - should return false",
+        message = "when input random, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "lgxglnui75%6d'&jhcmh\njyx"
@@ -132,7 +131,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 10: invalid grid with one row having 5 cells - should return false",
+        message = "when rows have missing cells, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "1--92----" +
@@ -140,7 +139,7 @@ fun main(){
                 "-------7-" +
                 "-5---81-2" +
                 "---------" +
-                "4-27-" +           // invalid row with 5 cells
+                "4-27    -" +           // invalid row with 5 cells
                 "-6-------" +
                 "----3-945" +
                 "----71--6"
@@ -148,10 +147,10 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 11: completed sudoku from https://github.com/bvluong/sudoku/blob/master/puzzles/sudoku1-solved.txt - should return true",
+        message = "when sudoku is valid and complete, then return true",
         result = sudokuChecker(
             sudokuInput =
-                "483921657" +
+                "483921657" +       // sudoku from https://github.com/bvluong/sudoku/blob/master/puzzles/sudoku1-solved.txt
                 "967345821" +
                 "251876493" +
                 "548132976" +
@@ -164,7 +163,7 @@ fun main(){
         correctResult = true
     )
     check(
-        message = "case 12: another duplication - should return false",
+        message = "when a complete sudoku has a duplication, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "135984276" +
@@ -180,7 +179,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 13: invalid character is used - should return false",
+        message = "when invalid character is used, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "-a-81-74-" +       // letter a
@@ -196,7 +195,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 14: a row with too few cells - should return false",
+        message = "when a rows have too few cells, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "1--92-" +          // too few cells
@@ -212,7 +211,7 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 15: a row with too many cells - should return false",
+        message = "when a rows have too many cells, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "1--92----" +
@@ -228,9 +227,9 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 16: a valid 16x16 sudoku from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt - should return true",
+        message = "when sudoku is valid and 16x16, then return true",
         result = sudokuChecker(
-            sudokuInput =
+            sudokuInput =       //  sudoku from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt
                 "0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0 " +
                 "0 6 3 16 12 0 8 4 14 15 1 0 2 0 0 0 " +
                 "14 0 9 7 11 3 15 0 0 0 0 0 0 0 0 0 " +
@@ -253,9 +252,9 @@ fun main(){
         correctResult = true
     )
     check(
-        message = "case 17: a complete 16x16 sudoku from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt - should return true",
+        message = "when a 16x16 sudoku is complete, then return true",
         result = sudokuChecker(
-            sudokuInput =
+            sudokuInput =       // from https://gist.github.com/vaskoz/8212615#file-sudoku_prob_16_16-txt
                 "8 15 11 1 6 2 10 14 12 7 13 3 16 9 4 5 " +
                 "10 6 3 16 12 5 8 4 14 15 1 9 2 11 7 13 " +
                 "14 5 9 7 11 3 15 13 8 2 16 4 12 10 1 6 " +
@@ -278,7 +277,7 @@ fun main(){
         correctResult = true
     )
     check(
-        message = "case 18: duplication - 16x16 sudoku - should return false",
+        message = "when a 16x16 sudoku has a duplication, then return false",
         result = sudokuChecker(
             sudokuInput =
                 "0 15 0 1 0 2 10 14 12 0 0 0 0 0 0 0 " +
@@ -303,62 +302,78 @@ fun main(){
         correctResult = false
     )
     check(
-        message = "case 19: valid sudoku from case 6, but with letters instead of numbers, and a comma delimiter - should return true",
+        message = "when improper delimiter is used in the sudoku, then return false",
         result = sudokuChecker(
-            sudokuInput = "a,-,-,i,b,-,-,-,-,e,b,d,-,a,-,-,-,-,-,-,-,-,-,-,-,g,-,-,e,-,-,-,h,a,-,b,-,-,-,-,-,-,-,-,-,d,-,b,g,-,-,-,i,-,-,f,-,-,-,-,-,-,-,-,-,-,-,c,-,i,d,e,-,-,-,-,g,a,-,-,f",
+            sudokuInput =
+                "1,,,-,9,2,-,-,-,-," +    // improper use here
+                "5,2,4,-,1,-,-,-,-," +
+                "-,-,-,-,-,-,-,7,-," +
+                "-,5,-,-,-,8,1,-,2," +
+                "-,-,-,-,-,-,-,-,-," +
+                "4,-,2,7,-,-,-,9,-," +
+                "-,6,-,-,-,-,-,-,-," +
+                "-,-,-,-,3,-,9,4,5," +
+                "-,-,-,-,7,1,-,-,6",
             delimiter = ","
+        ),
+        correctResult = false
+    )
+    check(
+        message = "when not using the default delimiter in the sudoku with out passing it to the delimiter parameter, then return false",
+        result = sudokuChecker(
+            sudokuInput =
+                "1,-,-,9,2,-,-,-,-," +
+                "5,2,4,-,1,-,-,-,-," +
+                "-,-,-,-,-,-,-,7,-," +
+                "-,5,-,-,-,8,1,-,2," +
+                "-,-,-,-,-,-,-,-,-," +
+                "4,-,2,7,-,-,-,9,-," +
+                "-,6,-,-,-,-,-,-,-," +
+                "-,-,-,-,3,-,9,4,5," +
+                "-,-,-,-,7,1,-,-,6",
+            // delimiters = ","                  // not specified
+        ),
+        correctResult = false
+    )
+    check(
+        message = "when passing an incorrect value for the empty cell, then return false",
+        result = sudokuChecker(
+            sudokuInput =
+                "1,-,-,9,2,-,-,-,-," +
+                "5,2,4,-,1,-,-,-,-," +
+                "-,-,-,-,-,-,-,7,-," +
+                "-,5,-,-,-,8,1,-,2," +
+                "-,-,-,-,-,-,-,-,-," +
+                "4,-,2,7,-,-,-,9,-," +
+                "-,6,-,-,-,-,-,-,-," +
+                "-,-,-,-,3,-,9,4,5," +
+                "-,-,-,-,7,1,-,-,6",
+            emptyCell = '0',            // should '-'
+            delimiter = ","
+        ),
+        correctResult = false
+    )
+    check(
+        message = "when sudoku is a valid 3x3 grid, then return true",
+        result = sudokuChecker(
+            sudokuInput =
+                "1--" +
+                "32-" +
+                "-3-"
         ),
         correctResult = true
     )
     check(
-        message = "case 20: improper delimiter, but with letters instead of numbers, and a comma delimiter - should return false",
+        message = "when sudoku doesn't have a valid dimensions, then return false",
         result = sudokuChecker(
-            sudokuInput =
-                "a,,,-,i,b,-,-,-,-," +
-                "e,b,d,-,a,-,-,-,-," +
-                "-,-,-,-,-,-,-,g,-," +
-                "-,e,-,-,-,h,a,-,b," +
-                "-,-,-,-,-,-,-,-,-," +
-                "d,-,b,g,-,-,-,i,-," +
-                "-,f,-,-,-,-,-,-,-," +
-                "-,-,-,-,c,-,i,d,e," +
-                "-,-,-,-,g,a,-,-,f",
-            delimiter = ","
-        ),
-        correctResult = false
-    )
-    check(
-        message = "case 21: not spacing delimiter - should return false",
-        result = sudokuChecker(
-            sudokuInput =
-                "a,-,-,i,b,-,-,-,-," +
-                "e,b,d,-,a,-,-,-,-," +
-                "-,-,-,-,-,-,-,g,-," +
-                "-,e,-,-,-,h,a,-,b," +
-                "-,-,-,-,-,-,-,-,-," +
-                "d,-,b,g,-,-,-,i,-," +
-                "-,f,-,-,-,-,-,-,-," +
-                "-,-,-,-,c,-,i,d,e," +
-                "-,-,-,-,g,a,-,-,f",
-            // delimiters = ","
-        ),
-        correctResult = false
-    )
-    check(
-        message = "case 22: incorrect empty cell - should return false",
-        result = sudokuChecker(
-            sudokuInput =
-                "a,-,-,i,b,-,-,-,-," +
-                "e,b,d,-,a,-,-,-,-," +
-                "-,-,-,-,-,-,-,g,-," +
-                "-,e,-,-,-,h,a,-,b," +
-                "-,-,-,-,-,-,-,-,-," +
-                "d,-,b,g,-,-,-,i,-," +
-                "-,f,-,-,-,-,-,-,-," +
-                "-,-,-,-,c,-,i,d,e," +
-                "-,-,-,-,g,a,-,-,f",
-            emptyCell = '0',    // should '-'
-            delimiter = ","
+            sudokuInput =            // 7x7 is not valid
+                "1--32--" +
+                "524-1--" +
+                "-------" +
+                "-5---71" +
+                "-------" +
+                "4-27---" +
+                "-6-----"
         ),
         correctResult = false
     )
