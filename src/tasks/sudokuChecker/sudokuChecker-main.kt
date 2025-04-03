@@ -123,6 +123,29 @@ class SudokuAnalyzer(sudokuPlainText: String, private val emptyCell: Char) {
         )
     }
 
+    private fun calculateIndices(valueIndex : Int){
+        rowIndex = valueIndex / sudokuSideLength
+        columnIndex = valueIndex % sudokuSideLength
+        subGridIndex = subGridSideLength * ( rowIndex / subGridSideLength) +  columnIndex / subGridSideLength
+    }
+
+    private fun storeValue(cellValue : String) {
+        rows[rowIndex].add(cellValue)
+        columns[columnIndex].add(cellValue)
+        subGrids[subGridIndex].add(cellValue)
+    }
+
+    fun isThereDuplicationOrInvalidValue(): Boolean {
+        for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
+            if (cellValue == emptyCell.toString()) continue
+            if (cellValue.toIntOrNull() !in uniqueValues) return true
+            calculateIndices(valueIndex)
+            if (cellValue in rows[rowIndex] + columns[columnIndex] + subGrids[subGridIndex]) return true
+            storeValue(cellValue)
+        }
+        return false
+    }
+
     fun printInputAndInternalArrays() {
         println("test")
         var inputString = ""
@@ -143,28 +166,4 @@ class SudokuAnalyzer(sudokuPlainText: String, private val emptyCell: Char) {
         println("columns: $columns")
         println("subGrids: $subGrids")
     }
-
-    private fun calculateIndices(valueIndex : Int){
-        rowIndex = valueIndex / sudokuSideLength
-        columnIndex = valueIndex % sudokuSideLength
-        subGridIndex = subGridSideLength * ( rowIndex / subGridSideLength) +  columnIndex / subGridSideLength
-    }
-
-    fun isThereDuplicationOrInvalidValue(): Boolean {
-
-        for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
-
-            if (cellValue == emptyCell.toString()) continue
-            if (cellValue.toIntOrNull() !in uniqueValues) return true
-
-            calculateIndices(valueIndex)
-
-            if (cellValue in rows[rowIndex] + columns[columnIndex] + subGrids[subGridIndex]) return true
-
-            rows[rowIndex].add(cellValue); columns[columnIndex].add(cellValue); subGrids[subGridIndex].add(cellValue)
-        }
-
-        return false
-    }
-
 }
