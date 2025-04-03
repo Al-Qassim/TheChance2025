@@ -25,23 +25,12 @@ fun main() {
  */
 
 fun ipv4Checker(ipv4Input : String) : Boolean {
-    // requirements:
-    //      input must have four numerical segments separated by dots
-    //      each numerical segment shouldn't have a leading zero, unless it's 0
-    //      each numerical segment should be in range 0..255
 
-    // ensure input consist of four numerical segments separated by dots
     val numericalSegments = ipv4Input.split(".")
     if (numericalSegments.size != 4) return false
 
     numericalSegments.forEach{numericalSegment ->
-        // ensure numerical segment is a UByte, i.e. an integer in range 0..255
-        try {
-            numericalSegment.toUByte()
-        } catch (_: Exception) {
-            return false
-        }
-        // ensure numerical segment don't have leading zero while not equaling "0"
+        numericalSegment.toUByteOrNull()?: return false
         if (numericalSegment[0] == '0' && numericalSegment != "0") return false
     }
     return true
