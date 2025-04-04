@@ -31,6 +31,7 @@ fun ipv4Checker(ipv4Input : String) : Boolean {
 
     numericalSegments.forEach{numericalSegment ->
         numericalSegment.toUByteOrNull()?: return false
+        if (numericalSegment.any{!it.isDigit()}) return false
         if (numericalSegment[0] == '0' && numericalSegment != "0") return false
     }
     return true

@@ -3,27 +3,29 @@ package tasks.sudokuChecker
 import kotlin.math.sqrt
 
 fun main() {
-    print("valid sudoku: " + sudokuChecker(
-        sudokuPlainText =
-            "1,-,-,9,2,-,-,-,-," +
-            "5,2,4,-,1,-,-,-,-," +
-            "-,-,-,-,-,-,-,7,-," +
-            "-,5,-,-,-,8,1,-,2," +
-            "-,-,-,-,-,-,-,-,-," +
-            "4,-,2,7,-,-,-,9,-," +
-            "-,6,-,-,-,-,-,-,-," +
-            "-,-,-,-,3,-,9,4,5," +
-            "-,-,-,-,7,1,-,-,6",
-        printInputAndInternalArrays = true
-    )
-    )
+    val c = mutableSetOf(1,2)
+    println(c.add(2))
+    println(c)
+//    print("valid sudoku: " + sudokuChecker(
+//        sudokuPlainText =
+//            "1,-,-,9,2,-,-,-,-," +
+//            "5,2,4,-,1,-,-,-,-," +
+//            "-,-,-,-,-,-,-,7,-," +
+//            "-,5,-,-,-,8,1,-,2," +
+//            "-,-,-,-,-,-,-,-,-," +
+//            "4,-,2,7,-,-,-,9,-," +
+//            "-,6,-,-,-,-,-,-,-," +
+//            "-,-,-,-,3,-,9,4,5," +
+//            "-,-,-,-,7,1,-,-,6",
+//        printInputAndInternalArrays = true
+//    )
+//    )
 }
 
 /**
  * Checks if the given string represents a valid Sudoku puzzle. the delimiter must be a comma ","
  *
  * @param sudokuPlainText A string representing a Sudoku grid.
- * @param emptyCell Optional. A char that indicate empty cells, default is '-'
  * @param printInputAndInternalArrays Optional. default is false
  *
  * @return `true` if the sudokuPlainText is a valid Sudoku, `false` otherwise.
@@ -82,11 +84,10 @@ fun main() {
  */
 fun sudokuChecker(
     sudokuPlainText: String,
-    emptyCell: Char = '-',
     printInputAndInternalArrays : Boolean = false,
 ): Boolean {
 
-    val analyzer = SudokuAnalyzer(sudokuPlainText, emptyCell)
+    val analyzer = SudokuAnalyzer(sudokuPlainText)
 
     if (!analyzer.isDimensionsValid()) return false
 
@@ -97,7 +98,7 @@ fun sudokuChecker(
     return true
 }
 
-class SudokuAnalyzer(sudokuPlainText: String, private val emptyCell: Char) {
+class SudokuAnalyzer(sudokuPlainText: String) {
 
     private val sudokuValues = sudokuPlainText.split(",")
 
@@ -129,19 +130,20 @@ class SudokuAnalyzer(sudokuPlainText: String, private val emptyCell: Char) {
         subGridIndex = subGridSideLength * ( rowIndex / subGridSideLength) +  columnIndex / subGridSideLength
     }
 
-    private fun storeValue(cellValue : String) {
-        rows[rowIndex].add(cellValue)
-        columns[columnIndex].add(cellValue)
-        subGrids[subGridIndex].add(cellValue)
+    private fun storeValueIfPossible(valueIndex : Int, cellValue : String) : Boolean {
+        calculateIndices(valueIndex)
+        return (
+            rows[rowIndex].add(cellValue) &&
+            columns[columnIndex].add(cellValue) &&
+            subGrids[subGridIndex].add(cellValue)
+        )
     }
 
     fun isThereDuplicationOrInvalidValue(): Boolean {
         for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
-            if (cellValue == emptyCell.toString()) continue
+            if (cellValue == "-") continue
             if (cellValue.toIntOrNull() !in uniqueValues) return true
-            calculateIndices(valueIndex)
-            if (cellValue in rows[rowIndex] + columns[columnIndex] + subGrids[subGridIndex]) return true
-            storeValue(cellValue)
+            if (!storeValueIfPossible(valueIndex, cellValue)) return true
         }
         return false
     }
@@ -167,3 +169,5 @@ class SudokuAnalyzer(sudokuPlainText: String, private val emptyCell: Char) {
         println("subGrids: $subGrids")
     }
 }
+
+
