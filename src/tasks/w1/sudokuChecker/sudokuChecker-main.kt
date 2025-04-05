@@ -18,12 +18,19 @@ fun main(){
 
 fun sudokuChecker(
     sudokuPlainText: String,
-    printInputAndInternalArrays : Boolean = false,
+    printInputAndInternalArrays : Boolean = false // this is only for presentation purposes
 ): Boolean {
-    val sudokuValues        = sudokuPlainText.split(" ") // ["-", "-", "3", "-", "2", "-", "6", "-", "-", "9", "-", "-", "3", "-", "5", "-", "-", "1", "-", "-", "1", "8", "-", "6", "4", "-", "-", "-", "-", "8", "1", "-", "2", "9", "-", "-", "7", "-", "-", "-", "-", "-", "-", "-", "8", "-", "-", "6", "7", "-", "8", "2", "-", "-", "-", "-", "2", "6", "-", "9", "5", "-", "-", "8", "-", "-", "2", "-", "3", "-", "-", "9", "-", "-", "5", "-", "1", "-", "3", "-", "-"]
+    val sudokuValues        = sudokuPlainText.split(" ")
 
     val sudokuSideLength    = sqrt(sudokuValues.size.toFloat()).toInt()
     val subGridSideLength   = sqrt(sudokuSideLength.toFloat()).toInt()
+
+    if (
+        sudokuSideLength < 4 ||
+        subGridSideLength < 2 ||
+        sudokuSideLength * sudokuSideLength != sudokuValues.size ||
+        subGridSideLength * subGridSideLength != sudokuSideLength
+    ) return false
 
     val uniqueValues        = 1..sudokuSideLength
 
@@ -31,44 +38,27 @@ fun sudokuChecker(
     val columns             = List(sudokuSideLength) { mutableSetOf<String>() }
     val subGrids            = List(sudokuSideLength) { mutableSetOf<String>() }
 
-    var rowIndex            = 0
-    var columnIndex         = 0
-    var subGridIndex        = 0
+    var rowIndex : Int
+    var columnIndex : Int
+    var subGridIndex : Int
 
-    fun isDimensionsValid() : Boolean {
-        return (
-            sudokuSideLength > 0 &&
-            subGridSideLength > 0 &&
-            sudokuSideLength * sudokuSideLength == sudokuValues.size &&
-            subGridSideLength * subGridSideLength == sudokuSideLength
-        )
-    }
+    for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
+        if (cellValue == "-") continue
+        if (cellValue.toIntOrNull() !in uniqueValues) return false
 
-    fun calculateIndices(valueIndex : Int) {
         rowIndex = valueIndex / sudokuSideLength
         columnIndex = valueIndex % sudokuSideLength
         subGridIndex = subGridSideLength * ( rowIndex / subGridSideLength) +  columnIndex / subGridSideLength
+
+        if (
+            !rows[rowIndex].add(cellValue) ||
+            !columns[columnIndex].add(cellValue) ||
+            !subGrids[subGridIndex].add(cellValue)
+        ) return false
     }
 
-    fun storeValueIfPossible(valueIndex : Int, cellValue : String) : Boolean {
-        calculateIndices(valueIndex)
-        return (
-                rows[rowIndex].add(cellValue) &&
-                columns[columnIndex].add(cellValue) &&
-                subGrids[subGridIndex].add(cellValue)
-                )
-    }
-
-    fun isThereDuplicationOrInvalidValue(): Boolean {
-        for ((valueIndex, cellValue) in sudokuValues.withIndex()) {
-            if (cellValue == "-") continue
-            if (cellValue.toIntOrNull() !in uniqueValues) return true
-            if (!storeValueIfPossible(valueIndex, cellValue)) return true
-        }
-        return false
-    }
-
-    fun printInputAndInternalArrays() {
+    // this is only for presentation purposes
+    if (printInputAndInternalArrays) {
         println("test")
         var inputString = ""
         for ((index, value) in sudokuValues.withIndex()){
@@ -88,12 +78,6 @@ fun sudokuChecker(
         println("columns: $columns")
         println("subGrids: $subGrids")
     }
-
-    if (!isDimensionsValid()) return false
-
-    if (isThereDuplicationOrInvalidValue()) return false
-
-    if (printInputAndInternalArrays) printInputAndInternalArrays()
 
     return true
 }
