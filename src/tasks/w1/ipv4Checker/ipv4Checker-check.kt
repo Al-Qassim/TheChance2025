@@ -1,4 +1,4 @@
-package tasks.ipv4Checker
+package tasks.w1.ipv4Checker
 
 import ipv4Checker
 
