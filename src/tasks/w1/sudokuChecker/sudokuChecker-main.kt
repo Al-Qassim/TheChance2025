@@ -2,19 +2,20 @@ import kotlin.math.sqrt
 
 fun main() {
     sudokuChecker(
-        sudokuPlainText =           // grid 01 from https://github.com/dimitri/sudoku/blob/master/sudoku.txt
-            "- - 3 - 2 - 6 - - " +
-                    "9 - - 3 - 5 - - 1 " +
-                    "- - 1 8 - 6 4 - - " +
-                    "- - 8 1 - 2 9 - - " +
-                    "7 - - - - - - - 8 " +
-                    "- - 6 7 - 8 2 - - " +
-                    "- - 2 6 - 9 5 - - " +
-                    "8 - - 2 - 3 - - 9 " +
-                    "- - 5 - 1 - 3 - -", // "- - 3 - 2 - 6 - - 9 - - 3 - 5 - - 1 - - 1 8 - 6 4 - - - - 8 1 - 2 9 - - 7 - - - - - - - 8 - - 6 7 - 8 2 - - - - 2 6 - 9 5 - - 8 - - 2 - 3 - - 9 - - 5 - 1 - 3 - -",
+        sudokuPlainText =
+            "- 2 4 - - - - - 9 " +
+            "9 8 6 - - - 2 1 - " +
+            "- - a 2 5 - - 6 8 " +
+            "- - - 8 4 - - - 1 " +
+            "1 - 8 - - - 3 - 4 " +
+            "4 - - - 1 2 - - - " +
+            "6 5 - - 9 7 8 - - " +
+            "- 4 1 - - - 9 7 3 " +
+            "8 - - - - - 1 5 -", // "- 2 4 - - - - - 9 9 8 6 - - - 2 1 - - - 7 2 5 - - 6 8 - - - 8 4 - - - 1 1 - 8 - - - 3 - 4 4 - - - 1 2 - - - 6 5 - - 9 7 8 - - - 4 1 - - - 9 7 3 8 - - - - - 1 5 - ",
         printInputAndInternalArrays = true
     )
 }
+
 
 fun sudokuChecker(
     sudokuPlainText: String,
@@ -34,7 +35,7 @@ fun sudokuChecker(
 
     val uniqueValues = 1..sudokuSideLength
 
-    val rows = List(sudokuSideLength) { mutableSetOf<String>() }
+    val rows = List(sudokuSideLength) { mutableSetOf<String>() } // [ [], [], [], [], [], [], [], [], [] ]
     val columns = List(sudokuSideLength) { mutableSetOf<String>() }
     val subGrids = List(sudokuSideLength) { mutableSetOf<String>() }
 
